@@ -21,6 +21,7 @@ print("\n***** SEMESTER SUMMARY *****")
 print("\n{:10}".format(str("Course #")) + "{:50}".format(str("Course Name")) + "{:10}".format(str("Grade"))
       + "{:10}".format(str("Credits")) + "{:10}".format(str("Points")) + "{:10}".format(str("GPA")))
 print(str("----------------------------------------------------------------------------------------------------"))
+
 while c < len(semesterGPA):
     courseName = semesterGPA[c][0]
     courseLetterGrade = semesterGPA[c][1]
@@ -42,10 +43,12 @@ while c < len(semesterGPA):
     cumCreditHours += int(courseCreditHours)
     cumGradePoints += int(courseCreditHours) * int(courseGradeValue)
 
-    print("{:10}".format("#" + str(c)) + "{:50}".format(str(courseName))
+    print("{:10}".format("#" + str(c + ":")) + "{:50}".format(str(courseName))
           + "{:10}".format(str(courseLetterGrade)) + "{:10}".format(str(courseCreditHours))
           + "{:10}".format(str(courseGradeValue)) + "{:10}".format(str(courseGPA)))
     print(str("----------------------------------------------------------------------------------------------------"))
     c += 1
-print("Total course(s): " + str(numClasses))
-print("\nSemester Cumulative GPA: " + str(int(cumGradePoints) / int(cumCreditHours)))
+
+print("{:60}".format(str("Total Course(s): " + str(numClasses))) + "{:10}".format("")
+    + "{:10}".format(str(cumCreditHours)) + "{:10}".format(str(cumGradePoints))
+    + "{:10}".format(str(int(cumGradePoints) / int(cumCreditHours))))
