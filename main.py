@@ -15,12 +15,15 @@ while x < int(numClasses):
     x += 1
 
 c = 1
+cumGradeValues = 0
 cumCreditHours = 0
 cumGradePoints = 0
 print("\n***** SEMESTER SUMMARY *****")
-print("\n{:10}".format(str("Course #")) + "{:50}".format(str("Course Name")) + "{:10}".format(str("Grade"))
-      + "{:10}".format(str("Credits")) + "{:10}".format(str("Points")) + "{:10}".format(str("GPA")))
-print(str("----------------------------------------------------------------------------------------------------"))
+print("\n{:10}".format(str("Course #")) + "{:50}".format(str("Course Name"))
+    + "{:10}".format(str("Grade")) + "{:15}".format(str("Grade Value"))
+    + "{:12}".format(str("Credit(s)")) + "{:10}".format(str("Point(s)"))
+    + "{:5}".format(str("GPA")))
+print(str("----------------------------------------------------------------------------------------------------------------"))
 
 while c < len(semesterGPA):
     courseName = semesterGPA[c][0]
@@ -40,15 +43,18 @@ while c < len(semesterGPA):
     else:
         courseGradeValue = 0
     courseGPA = (int(courseCreditHours) * int(courseGradeValue)) / int(courseCreditHours)
+    cumGradeValues += int(courseGradeValue)
     cumCreditHours += int(courseCreditHours)
     cumGradePoints += int(courseCreditHours) * int(courseGradeValue)
 
-    print("{:10}".format("#" + str(c + ":")) + "{:50}".format(str(courseName))
-          + "{:10}".format(str(courseLetterGrade)) + "{:10}".format(str(courseCreditHours))
-          + "{:10}".format(str(courseGradeValue)) + "{:10}".format(str(courseGPA)))
-    print(str("----------------------------------------------------------------------------------------------------"))
+    print("{:10}".format("#" + str(c) + ":") + "{:50}".format(str(courseName))
+          + "{:10}".format(str(courseLetterGrade)) + "{:15}".format(str(courseGradeValue))
+          + "{:12}".format(str(courseCreditHours)) + "{:10}".format(str(int(courseGradeValue) * int(courseCreditHours)))
+          + "{:>5}".format(str(courseGPA)))
+    print(str("----------------------------------------------------------------------------------------------------------------"))
     c += 1
 
 print("{:60}".format(str("Total Course(s): " + str(numClasses))) + "{:10}".format("")
-    + "{:10}".format(str(cumCreditHours)) + "{:10}".format(str(cumGradePoints))
-    + "{:10}".format(str(int(cumGradePoints) / int(cumCreditHours))))
+    + "{:15}".format(str(cumGradeValues))
+    + "{:12}".format(str(cumCreditHours)) + "{:10}".format(str(cumGradePoints))
+    + "{:>5}".format(str(int(cumGradePoints) / int(cumCreditHours))))
